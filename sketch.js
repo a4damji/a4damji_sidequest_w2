@@ -35,15 +35,7 @@ let blob3 = {
   frictionGround: 0.88, // Stronger friction on ground
 };
 
-let ghost = {
-  // Position + size (AABB like platforms)
-  x: 420,
-  y: floorY3 - 60,
-  w: 40,
-  h: 50,
-
-  active: true, // Is the ghost still in the world?
-};
+let ghost;
 
 let currentSection = 0; // 0 = main area, 1 = new area
 
@@ -70,6 +62,15 @@ function setup() {
     { x: 520, y: floorY3 - 70, w: 90, h: 12 }, // return ramp
   ];
 
+  //ghost
+  ghost = {
+    x: 420,
+    y: floorY3 - 60,
+    w: 40,
+    h: 50,
+    active: true,
+  };
+
   // Start the blob resting on the floor
   blob3.y = floorY3 - blob3.r - 1;
 }
@@ -81,11 +82,6 @@ function draw() {
     drawMainSection();
   } else if (currentSection === 1) {
     drawGhostSection();
-  }
-
-  // Draw ghost
-  if (ghost.active) {
-    drawGhost(ghost);
   }
 
   // --- HUD ---
@@ -160,15 +156,8 @@ function drawMainSection() {
     }
   }
 
-  //ghost collison
-  let box2 = {
-    x: blob3.x - blob3.r,
-    y: blob3.y - blob3.r,
-    w: blob3.r * 2,
-    h: blob3.r * 2,
-  };
   // --- Blob ↔ Ghost interaction ---
-  if (ghost.active && overlap(box2, ghost)) {
+  if (ghost.active && overlap(box, ghost)) {
     ghost.active = false; // Remove ghost
     currentSection = 1; // Move to a new section
   }
