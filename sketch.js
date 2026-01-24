@@ -62,11 +62,12 @@ function setup() {
 
   //ghost
   ghost = {
-    x: 420,
-    y: floorY3 - 60,
+    x: random(width),
+    y: random(floorY3 - height),
     w: 40,
     h: 50,
     active: true,
+    move: false,
   };
 
   // Start the blob resting on the floor
@@ -91,7 +92,7 @@ function drawMainSection() {
   }
 
   drawGhost(ghost);
-  if ((ghost.move = false)) {
+  if ((ghost.move = true)) {
     drawGhost(ghost);
   }
 
@@ -155,7 +156,7 @@ function drawMainSection() {
 
   // --- Blob ↔ Ghost interaction ---
   if (ghost.active && overlap(box, ghost)) {
-    ghost.move = false; // move ghost
+    ghost.move = true; // move ghost
   }
 
   // --- Convert collision box back to blob centre ---
@@ -217,9 +218,7 @@ function drawGhost(g) {
   fill(255, 255, 255, 200);
 
   // Body
-  let x = random(width);
-  let y = random(height);
-  rect(x, y, g.w, g.h, 12);
+  rect(g.x, g.y, g.w, g.h, 12);
 
   // Eyes
   fill(0);
