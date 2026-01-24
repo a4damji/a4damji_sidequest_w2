@@ -35,6 +35,20 @@ let blob3 = {
   frictionGround: 0.88, // Stronger friction on ground
 };
 
+let ghost = {
+  //body
+  rectW: 50,
+  rectH: 30,
+  x: random(width - rectW),
+  y: random(height - rectH),
+
+  rect: (x, y, rectW, rectH),
+
+  //face
+  circle: (x + 10, y - 20, 10),
+  circle: (x + 30, y - 20, 10),
+};
+
 // List of solid platforms the blob can stand on
 // Each platform is an axis-aligned rectangle (AABB)
 let platforms = [];
@@ -60,6 +74,9 @@ function setup() {
 
   // Start the blob resting on the floor
   blob3.y = floorY3 - blob3.r - 1;
+
+  //draw ghost
+  ghost;
 }
 
 function draw() {
