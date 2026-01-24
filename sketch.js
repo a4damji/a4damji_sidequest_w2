@@ -83,17 +83,26 @@ function draw() {
     drawGhostSection();
   }
 
+  // Draw ghost
+  if (ghost.active) {
+    drawGhost(ghost);
+  }
+
+  // --- HUD ---
+  fill("white");
+  text("Move: A/D or ←/→  •  Jump: Space/W/↑  •  Land on platforms", 10, 18);
+}
+
+function drawMainSection() {
   // --- Draw all platforms ---
   fill(200);
   for (const p of platforms) {
     rect(p.x, p.y, p.w, p.h);
   }
 
-  // Draw ghost
-  if (ghost.active) {
-    drawGhost(ghost);
-  }
+  if (ghost.active) drawGhost(ghost);
 
+  // ALL blob movement + physics code stays here
   // --- Input: left/right movement ---
   let move = 0;
   if (keyIsDown(65) || keyIsDown(LEFT_ARROW)) move -= 1; // A or ←
@@ -174,10 +183,18 @@ function draw() {
   // --- Draw the animated blob ---
   blob3.t += blob3.tSpeed;
   drawBlobCircle(blob3);
+}
 
-  // --- HUD ---
-  fill("white");
-  text("Move: A/D or ←/→  •  Jump: Space/W/↑  •  Land on platforms", 10, 18);
+function drawGhostSection() {
+  background(30, 20, 50);
+
+  fill(255);
+  textAlign(CENTER);
+  textSize(24);
+  text("You followed the ghost…", width / 2, height / 2);
+
+  // Optional: draw blob here too
+  drawBlobCircle(blob3);
 }
 
 // Axis-Aligned Bounding Box (AABB) overlap test
