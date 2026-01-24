@@ -91,7 +91,7 @@ function drawMainSection() {
   }
 
   drawGhost(ghost);
-  if ((ghost.move = true)) {
+  if ((ghost.move = false)) {
     drawGhost(ghost);
   }
 
@@ -155,7 +155,7 @@ function drawMainSection() {
 
   // --- Blob ↔ Ghost interaction ---
   if (ghost.active && overlap(box, ghost)) {
-    ghost.move = true; // move ghost
+    ghost.move = false; // move ghost
   }
 
   // --- Convert collision box back to blob centre ---
