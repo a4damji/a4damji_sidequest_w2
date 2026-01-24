@@ -217,7 +217,9 @@ function drawGhost(g) {
   fill(255, 255, 255, 200);
 
   // Body
-  rect(g.x, g.y, g.w, g.h, 12);
+  let x = random(width);
+  let y = random(height);
+  rect(x, y, g.w, g.h, 12);
 
   // Eyes
   fill(0);
