@@ -63,7 +63,7 @@ function setup() {
   //ghost
   ghost = {
     x: random(width),
-    y: random(floorY3, 490),
+    y: random(160, 300),
     w: 40,
     h: 50,
     active: true,
