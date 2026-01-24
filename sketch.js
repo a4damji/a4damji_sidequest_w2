@@ -60,6 +60,13 @@ function setup() {
     { x: 520, y: floorY3 - 70, w: 90, h: 12 }, // return ramp
   ];
 
+  // Start the blob resting on the floor
+  blob3.y = floorY3 - blob3.r - 1;
+}
+
+function draw() {
+  background(0);
+
   //ghost
   ghost = {
     x: random(width),
@@ -69,14 +76,6 @@ function setup() {
     active: true,
     move: false,
   };
-
-  // Start the blob resting on the floor
-  blob3.y = floorY3 - blob3.r - 1;
-}
-
-function draw() {
-  background(0);
-
   drawMainSection();
 
   // --- HUD ---
