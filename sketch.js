@@ -140,7 +140,7 @@ function draw() {
   drawBlobCircle(blob3);
 
   // --- HUD ---
-  fill(0);
+  fill(1);
   text("Move: A/D or ←/→  •  Jump: Space/W/↑  •  Land on platforms", 10, 18);
 }
 
