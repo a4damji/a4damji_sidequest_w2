@@ -59,6 +59,7 @@ function setup() {
     { x: 440, y: floorY3 - 180, w: 130, h: 12 }, // high step
     { x: 520, y: floorY3 - 70, w: 90, h: 12 }, // return ramp
   ];
+
   //ghost
   ghost = {
     x: random(width),
@@ -66,7 +67,7 @@ function setup() {
     w: 40,
     h: 50,
     active: true,
-    move: false,
+    hit: false,
   };
 
   // Start the blob resting on the floor
@@ -91,9 +92,9 @@ function drawMainSection() {
   }
 
   if (ghost.active) drawGhost(ghost);
-  if ((ghost.move = true)) {
+  if ((ghost.hit = true)) {
     drawGhost(ghost);
-    ghost.move = false;
+    ghost.hit = false;
   }
 
   // ALL blob movement + physics code stays here
@@ -156,7 +157,7 @@ function drawMainSection() {
 
   // --- Blob ↔ Ghost interaction ---
   if (ghost.active && overlap(box, ghost)) {
-    ghost.move = true; // move ghost
+    ghost.hit = true; // move ghost
     ghost.active = false; //remove first ghost
   }
 
