@@ -78,11 +78,7 @@ function setup() {
 function draw() {
   background(240);
 
-  if (currentSection === 0) {
-    drawMainSection();
-  } else if (currentSection === 1) {
-    drawGhostSection();
-  }
+  drawMainSection();
 
   // --- HUD ---
   fill("white");
@@ -171,18 +167,6 @@ function drawMainSection() {
 
   // --- Draw the animated blob ---
   blob3.t += blob3.tSpeed;
-  drawBlobCircle(blob3);
-}
-
-function drawGhostSection() {
-  background(30, 20, 50);
-
-  fill(255);
-  textAlign(CENTER);
-  textSize(24);
-  text("You followed the ghost…", width / 2, height / 2);
-
-  // Optional: draw blob here too
   drawBlobCircle(blob3);
 }
 
