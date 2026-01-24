@@ -37,8 +37,6 @@ let blob3 = {
 
 let ghost;
 
-let currentSection = 0; // 0 = main area, 1 = new area
-
 // List of solid platforms the blob can stand on
 // Each platform is an axis-aligned rectangle (AABB)
 let platforms = [];
@@ -92,7 +90,10 @@ function drawMainSection() {
     rect(p.x, p.y, p.w, p.h);
   }
 
-  if (ghost.active) drawGhost(ghost);
+  drawGhost(ghost);
+  if ((ghost.move = true)) {
+    drawGhost(ghost);
+  }
 
   // ALL blob movement + physics code stays here
   // --- Input: left/right movement ---
@@ -154,8 +155,7 @@ function drawMainSection() {
 
   // --- Blob ↔ Ghost interaction ---
   if (ghost.active && overlap(box, ghost)) {
-    ghost.active = false; // Remove ghost
-    currentSection = 1; // Move to a new section
+    ghost.move = true; // move ghost
   }
 
   // --- Convert collision box back to blob centre ---
