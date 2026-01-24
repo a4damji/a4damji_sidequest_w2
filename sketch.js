@@ -36,18 +36,16 @@ let blob3 = {
 };
 
 let ghost = {
-  //body
-  rectW: 50,
-  rectH: 30,
-  x: random(width - rectW),
-  y: random(height - rectH),
+  // Position + size (AABB like platforms)
+  x: 420,
+  y: floorY3 - 60,
+  w: 40,
+  h: 50,
 
-  rect: (x, y, rectW, rectH),
-
-  //face
-  circle: (x + 10, y - 20, 10),
-  circle: (x + 30, y - 20, 10),
+  active: true, // Is the ghost still in the world?
 };
+
+let currentSection = 0; // 0 = main area, 1 = new area
 
 // List of solid platforms the blob can stand on
 // Each platform is an axis-aligned rectangle (AABB)
@@ -74,18 +72,26 @@ function setup() {
 
   // Start the blob resting on the floor
   blob3.y = floorY3 - blob3.r - 1;
-
-  //draw ghost
-  ghost;
 }
 
 function draw() {
   background(240);
 
+  if (currentSection === 0) {
+    drawMainSection();
+  } else if (currentSection === 1) {
+    drawGhostSection();
+  }
+
   // --- Draw all platforms ---
   fill(200);
   for (const p of platforms) {
     rect(p.x, p.y, p.w, p.h);
+  }
+
+  // Draw ghost
+  if (ghost.active) {
+    drawGhost(ghost);
   }
 
   // --- Input: left/right movement ---
@@ -145,6 +151,19 @@ function draw() {
     }
   }
 
+  //ghost collison
+  let box2 = {
+    x: blob3.x - blob3.r,
+    y: blob3.y - blob3.r,
+    w: blob3.r * 2,
+    h: blob3.r * 2,
+  };
+  // --- Blob ↔ Ghost interaction ---
+  if (ghost.active && overlap(box2, ghost)) {
+    ghost.active = false; // Remove ghost
+    currentSection = 1; // Move to a new section
+  }
+
   // --- Convert collision box back to blob centre ---
   blob3.x = box.x + box.w / 2;
   blob3.y = box.y + box.h / 2;
@@ -201,6 +220,19 @@ function keyPressed() {
     blob3.vy = blob3.jumpV;
     blob3.onGround = false;
   }
+}
+
+//drawing ghost function
+function drawGhost(g) {
+  fill(255, 255, 255, 200);
+
+  // Body
+  rect(g.x, g.y, g.w, g.h, 12);
+
+  // Eyes
+  fill(0);
+  ellipse(g.x + 12, g.y + 18, 6);
+  ellipse(g.x + 28, g.y + 18, 6);
 }
 
 /* In-class tweaks for experimentation:
