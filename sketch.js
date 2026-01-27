@@ -190,8 +190,9 @@ function overlap(a, b) {
 }
 
 function triggerWobbleSpike() {
+  fill("red");
   blob3.wobbleFreq = blob3.wobbleBoost;
-  blob3.wobbleTimer = 20; // frames (~0.3 seconds)
+  blob3.wobbleTimer = 100;
 }
 
 // Draws the blob using Perlin noise for a soft, breathing effect
