@@ -1,39 +1,21 @@
 ## Project Title
 
-GBDA302 Week 2 Example 3: Platforms (AABB Collisions)
-
----
+a4damji_sidequest_w2
 
 ## Authors
 
-Karen Cochrane and David Han
+Amara Damji, a4damji, 21071052
+
+Cloned from code made by: Karen Cochrane and David Han
 
 ---
 
 ## Description
 
-Adds several rectangular platforms. The blob is drawn as a noisy circle but collides using a simple axis-aligned bounding box (AABB). X and Y are resolved separately to keep behaviour predictable and teachable.
+## Emotion is fear. In the blobs world is a ghost which when interacted with frightens the blob.
 
----
+## Setup and Interaction Instructions:
 
-## Learning Goals
-
-Learning Goals:
-
-- Convert a circular sprite to an AABB for collision
-- Implement overlap test and push-out resolution
-- Manage grounded state only when landing on top faces
-
----
-
-## Assets
-
-N/A
-
----
-
-## GenAI
-
-The code was written by Dr. Karen Cochrane but she used GenAI to write the comments.
+Use left and right arrow keys or keys AD to move blob left and right. To jump use up arrow, W key, or space bar. Interact with ghost to be startled.
 
 ---
