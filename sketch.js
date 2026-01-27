@@ -33,6 +33,10 @@ let blob3 = {
   // Friction
   frictionAir: 0.995, // Light friction in air
   frictionGround: 0.88, // Stronger friction on ground
+
+  wobbleBase: 0.9, // normal noise frequency
+  wobbleBoost: 2.2, // aggressive spike
+  wobbleTimer: 0, // how long the spike lasts
 };
 
 let ghost;
@@ -91,10 +95,14 @@ function drawMainSection() {
     rect(p.x, p.y, p.w, p.h);
   }
 
-  if (ghost.active) drawGhost(ghost);
-  if ((ghost.hit = true)) {
-    drawGhost(ghost);
-    ghost.hit = false;
+  drawGhost(ghost);
+
+  // --- Wobble cooldown ---
+  if (blob3.wobbleTimer > 0) {
+    blob3.wobbleTimer--;
+    if (blob3.wobbleTimer === 0) {
+      blob3.wobbleFreq = blob3.wobbleBase;
+    }
   }
 
   // ALL blob movement + physics code stays here
@@ -156,9 +164,9 @@ function drawMainSection() {
   }
 
   // --- Blob ↔ Ghost interaction ---
-  if (ghost.active && overlap(box, ghost)) {
-    ghost.hit = true; // move ghost
-    ghost.active = false; //remove first ghost
+  if (overlap(box, ghost)) {
+    respawnGhost();
+    triggerWobbleSpike();
   }
 
   // --- Convert collision box back to blob centre ---
@@ -179,6 +187,11 @@ function overlap(a, b) {
   return (
     a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y
   );
+}
+
+function triggerWobbleSpike() {
+  blob3.wobbleFreq = blob3.wobbleBoost;
+  blob3.wobbleTimer = 20; // frames (~0.3 seconds)
 }
 
 // Draws the blob using Perlin noise for a soft, breathing effect
@@ -213,6 +226,11 @@ function keyPressed() {
     blob3.vy = blob3.jumpV;
     blob3.onGround = false;
   }
+}
+
+function respawnGhost() {
+  ghost.x = random(40, width - ghost.w - 40);
+  ghost.y = random(40, floorY3 - ghost.h - 20);
 }
 
 //drawing ghost function
