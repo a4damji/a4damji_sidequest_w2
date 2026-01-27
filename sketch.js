@@ -83,6 +83,15 @@ function draw() {
 
   drawMainSection();
 
+  // Black window
+  fill(0);
+  square(0, 0, 640, 360);
+
+  // Erase a circular area.
+  erase();
+  circle(blob3.x, blob3.y, 40);
+  noErase();
+
   // --- HUD ---
   fill("white");
   text("Move: A/D or ←/→  •  Jump: Space/W/↑  •  Land on platforms", 10, 18);
