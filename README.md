@@ -12,7 +12,7 @@ Cloned from code made by: Karen Cochrane and David Han
 
 ## Description
 
-## Emotion is fear. In the blobs world is a ghost which when interacted with frightens the blob.
+Emotion is fear. In the blobs world is a ghost which when interacted with frightens the blob.
 
 ## Setup and Interaction Instructions:
 
