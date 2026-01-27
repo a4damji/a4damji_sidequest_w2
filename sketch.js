@@ -35,7 +35,7 @@ let blob3 = {
   frictionGround: 0.88, // Stronger friction on ground
 
   wobbleBase: 0.9, // normal noise frequency
-  wobbleBoost: 2.2, // aggressive spike
+  wobbleBoost: 4, // aggressive spike
   wobbleTimer: 0, // how long the spike lasts
 };
 
