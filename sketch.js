@@ -61,7 +61,7 @@ function setup() {
     { x: 100, y: floorY3 - 70, w: 120, h: 12 }, // low step
     { x: 290, y: floorY3 - 120, w: 90, h: 12 }, // mid step
     { x: 440, y: floorY3 - 170, w: 130, h: 12 }, // high step
-    { x: 40, y: floorY3 - 180, w: 130, h: 12 }, //new step
+    { x: 40, y: floorY3 - 170, w: 130, h: 12 }, //new step
     { x: 520, y: floorY3 - 70, w: 90, h: 12 }, // return ramp
   ];
 
