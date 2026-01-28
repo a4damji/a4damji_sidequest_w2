@@ -246,11 +246,3 @@ function drawGhost(g) {
   ellipse(g.x + 12, g.y + 18, 6);
   ellipse(g.x + 28, g.y + 18, 6);
 }
-
-/* In-class tweaks for experimentation:
-   • Add a new platform:
-     platforms.push({ x: 220, y: floorY3 - 150, w: 80, h: 12 });
-
-   • “Ice” feel → frictionGround = 0.95
-   • “Sand” feel → frictionGround = 0.80
-*/
