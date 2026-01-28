@@ -86,7 +86,11 @@ function draw() {
 
   // --- HUD ---
   fill("white");
-  text("Move: A/D or ←/→  •  Jump: Space/W/↑  •  Land on platforms", 10, 18);
+  text(
+    "Move: A/D or ←/→  •  Jump: Space/W/↑  •  Land on platforms. Careful of the ghost!",
+    10,
+    18,
+  );
 }
 
 function drawMainSection() {
