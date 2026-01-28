@@ -58,7 +58,7 @@ function setup() {
   // Create platforms (floor + steps)
   platforms = [
     { x: 0, y: floorY3, w: width, h: height - floorY3 }, // floor
-    { x: 120, y: floorY3 - 70, w: 120, h: 12 }, // low step
+    { x: 100, y: floorY3 - 70, w: 120, h: 12 }, // low step
     { x: 270, y: floorY3 - 120, w: 90, h: 12 }, // mid step
     { x: 440, y: floorY3 - 170, w: 130, h: 12 }, // high step
     { x: 60, y: floorY3 - 175, w: 130, h: 12 }, //new step
